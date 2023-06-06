@@ -1,127 +1,47 @@
-const boton_agregar = document.getElementById('boton-agregar');
-const lista_tareas = document.querySelector('.lista-tareas');
-const boton_limpiar = document.querySelector('.boton-limpiar');
 
-boton_agregar.addEventListener('click', () => {
-  agregarTarea("")
-})
+//tomamos los elementos
+var inputTarea = document.getElementById("tarea");
+var btn = document.getElementById("agregar");
+var listado = document.getElementById("listado");
+var cantidad = document.getElementById("cantidad");
 
-boton_limpiar.addEventListener('click', () => {
-  limpiarTodo()
-})
+//variable que lleva la cantidad de tareas
+var total = 0;
 
-lista_tareas.addEventListener('click', (event) => {
-  if(event.path[0].type == 'submit') {
-    eliminarTarea(event.path[1].id)
-  }
-})
-
-lista_tareas.addEventListener('keypress', (event) => {
-  if (event.keyCode == 13) {
-    editarTarea(event.path[1].id, event.path[0].value)
-  }
-})
-
-// Local Storage
-
-var arregloTareas = []
-var contador = 0
-
-const getContador = () => {
-  const cont = localStorage.getItem("contador")
-  return cont
-}
-
-const setContador = () => {
-    localStorage.setItem("contador",contador)
-}
-
-const inicilizarContador = () => {
-  if (getContador() != null) {
-    contador = getContador()
-  }
-}
-
-const getArregloTareas = () => {
-  setContador()
-  const arreglo = JSON.parse(localStorage.getItem("arregloTareas"))
-  return arreglo
-}
-
-const setArregloTareas = () => {
-  localStorage.setItem("arregloTareas",JSON.stringify(arregloTareas))
-  listarTareas()
-}
-
-const agregarTarea = (descripcion) => {
-  contador++
-  let objTarea = {
-    id: contador,
-    descripcion: descripcion
-  }
-  if (getArregloTareas() != null) {
-    arregloTareas = getArregloTareas()
-  }
-  arregloTareas.push(objTarea)
-  setArregloTareas()
-}
-
-const listarTareas = () => {
-  lista_tareas.innerHTML = ''
-  let datos = getArregloTareas()
-  if (datos != null) {
-    for (const tarea of datos.reverse()) {
-      lista_tareas.innerHTML += `
-        <li id="${tarea.id}">
-            <input type="text" class="input-tarea" value="${tarea.descripcion}">  
-            <button class="boton-eliminar">X</button>
-        </li>
-      `
+btn.onclick = function() {
+    //controlamos si el campo esta vacio
+    if (inputTarea.value == "") {
+        return;
     }
-  }
-}
+    //tomamos el valor del campo
+    var elemento = inputTarea.value;
+    //creo un elemento li
+    var li = document.createElement("li");
+    //le agrego el texto al elemento
+    li.textContent = elemento;
+    //egrego el li al listado
+    listado.appendChild(li);
+    //incremento la cantidad de tareas
+    total++;
+    cantidad.innerHTML = total;
 
-const editarTarea = (idTarea, descripcion) => {
-  let newTarea = {
-    id: idTarea,
-    descripcion: descripcion
-  }
-  let datos = getArregloTareas()
-  let newArreglo = []
-  if (datos != null) {
-    for (const tarea of datos) {
-      if (tarea.id == idTarea) {
-        newArreglo.push(newTarea)
-      }else{
-        newArreglo.push(tarea)
-      }
+    //Agregamos el boton eliminar a cada elemento del listado
+    var btnEliminar = document.createElement("span");
+    btnEliminar.textContent = "\u00d7";
+    li.appendChild(btnEliminar);
+
+
+    //Agregamos la funcionalidad que elimina del listado el elemento
+    btnEliminar.onclick = function() {
+        li.remove();
+        total--;
+        cantidad.innerHTML = total;
     }
-  }
-  arregloTareas = newArreglo
-  setArregloTareas()
+
+    //limpiamos el campo
+    inputTarea.value = "";
+
 }
 
-const eliminarTarea = (idTarea) => {
-  let datos = getArregloTareas()
-  let newArreglo = []
-  if (datos != null) {
-    for (const tarea of datos) {
-      if (tarea.id != idTarea) {
-        newArreglo.push(tarea)
-      }
-    }
-  }
-  arregloTareas = newArreglo
-  setArregloTareas()
-}
 
-const limpiarTodo = () => {
-  arregloTareas = []
-  contador = 0
-  setArregloTareas()
-  setContador()
-}
 
-inicia
-inicilizarContador()
-listarTareas()
