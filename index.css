@@ -6,102 +6,81 @@
     border-style: solid;
 }
 
-body {
-    background: rgb(5, 5, 20);
-  }
-  
-  .container {
-    background: #0c2de7;
-    max-width: 400px;
-    margin: auto;
-    padding: 10px 20px;
-  border-radius: 2rem;
-  height: 80%;
-  width: 90%;
-  }
-  
-  .header {
-    border-bottom: 1px solid black;
-  }
-  
-  .titulo {
-    text-align: center;
-  color: white;
-  }
-  
-  .boton-agregar {
-    display: block;
-    margin: auto;
-    margin-top: -15px;
-    padding: 4px 10px;
-    font-weight: bold;
-    border: 3px solid black;
-  border-radius: 2rem;
-  }
-  
-  .boton-agregar:hover {
-    background: rgb(102, 163, 255);
-  }
-  
-  .lista-tareas {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .lista-tareas li {
-    margin: 10px 0;
-    background: #cecbcb;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .lista-tareas li:hover {
-    background: rgb(175, 166, 166);
-  }
-  
-  .boton-eliminar {
-    background: black;
-    color: white;
-    font-weight: bold;
-    border: none;
-  border-radius: 2rem;
-  }
-  
-  .boton-eliminar:hover {
-    background: rgb(168, 15, 15);
-  }
-  
-  .input-tarea {
-    border: none;
-    background: #cecbcb;
-    padding: 4px;
-    width: 100%;
-    outline: none;
-    text-transform: capitalize;
-    font-size: 16px;
-  }
-  
-  .input-tarea:focus {
-    background: #eaeaea;
-  }
-  
-  .boton-limpiar {
-    display: block;
-    margin: auto;
-    margin-right: 0;
-    padding: 4px 10px;
-    font-weight: bold;
-    color: rgb(168, 15, 15);
-    border: 2px solid rgb(168, 15, 15);
-    background: #eaeaea;
-  }
-  
-  .boton-limpiar:hover {
-    color: #eaeaea;
-    background: rgb(168, 15, 15);
-  }
 
-  li{
-border-radius: 2rem;
+body{
+  background: rgb(5, 5, 20);
 }
+
+h1{
+  color: white;
+}
+
+section {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+  border: 1px solid #000;
+  border-radius: 2rem;
+  padding: 10px;
+  background-color: #397eff;
+}
+
+input {
+  width: 70%;
+  padding: 10px;
+border-radius: 2rem;
+background-color: rgb(155, 189, 246);
+}
+
+input:hover{
+background-color: rgb(19, 101, 244);
+
+}
+
+
+button {
+  width: 20%;
+  margin: 15px 0;
+  padding: 15px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  background-color: #000;
+  transition: background-color .5s;
+  color: #fff;
+}
+
+button:hover {
+  background-color: #37ff00;
+  color: #fff;
+}
+
+ul {
+  text-align: left;
+}
+
+ul li {
+  margin: 8px 0;
+}
+
+span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: firebrick;
+  border-radius: 100%;
+  text-align: center;
+  color: #fff;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+span:hover {
+  background-color: darkred;
+}
+
+
+ul{
+color: white;
+}
+
