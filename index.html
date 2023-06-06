@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de tareas</title>
-  <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lista de tareas</title>
+    <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
-  <div class="container">
-    <div class="header">
-      <h1 class="titulo">Lista de tareas</h1>
-    </div>
-    <button id="boton-agregar" class="boton-agregar">Agregar una tarea</button>
-    <ul class="lista-tareas">
-    </ul>
-    <button class="boton-limpiar">Limpiar todo</button>
-  </div>
-  <script src="index.js"></script>
+    <section>
+        <h1>Lista de tareas</h1>
+        <input type="text" id="tarea">
+        <button id="agregar">Agregar</button>
+
+        <h3>Tareas - <span id="cantidad"> 0</span></h3>
+        <ul id="listado">
+
+        </ul>
+    </section>
+
+    <script src="index.js"></script>
 </body>
+
 </html>
